@@ -1,0 +1,332 @@
+[
+  {
+    "platform": "reddit",
+    "subreddit": "sample_markets",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_001",
+    "parent_id": null,
+    "author_identifier": "research_user_001",
+    "created_utc": "2026-01-05T14:00:00Z",
+    "title": "NVDA reports strong earnings and raises guidance",
+    "body": "NVIDIA revenue growth beat expectations. The outlook appears bullish, but this is synthetic research text.",
+    "score": 42,
+    "num_comments": 12,
+    "permalink": "/synthetic/sample_markets/synthetic_001",
+    "retrieved_at": "2026-01-05T14:02:00Z",
+    "synthetic_outcomes": {
+      "NVDA": {
+        "5m": {"raw_return": 0.002, "benchmark_return": 0.0004},
+        "15m": {"raw_return": 0.004, "benchmark_return": 0.0008},
+        "30m": {"raw_return": 0.006, "benchmark_return": 0.001},
+        "1h": {"raw_return": 0.008, "benchmark_return": 0.0015},
+        "close": {"raw_return": 0.014, "benchmark_return": 0.003},
+        "1d": {"raw_return": 0.024, "benchmark_return": 0.004},
+        "5d": {"raw_return": 0.041, "benchmark_return": 0.009}
+      }
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_value",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_002",
+    "parent_id": null,
+    "author_identifier": "research_user_002",
+    "created_utc": "2026-01-06T15:00:00Z",
+    "title": "Nvidia Corp valuation discussion",
+    "body": "NVIDIA growth is strong, though valuation risk remains. Neutral until new guidance.",
+    "score": 18,
+    "num_comments": 7,
+    "permalink": "/synthetic/sample_value/synthetic_002",
+    "retrieved_at": "2026-01-06T15:03:00Z",
+    "synthetic_outcomes": {
+      "NVDA": {"1d": {"raw_return": 0.006, "benchmark_return": 0.003}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_markets",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_003",
+    "parent_id": null,
+    "author_identifier": "research_user_003",
+    "created_utc": "2026-01-08T14:15:00Z",
+    "title": "$SHOP product launch looks strong",
+    "body": "Shopify merchant tools improved and the product release supports growth.",
+    "score": 35,
+    "num_comments": 9,
+    "permalink": "/synthetic/sample_markets/synthetic_003",
+    "retrieved_at": "2026-01-08T14:17:00Z",
+    "synthetic_outcomes": {
+      "SHOP": {"1d": {"raw_return": 0.019, "benchmark_return": 0.004}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_value",
+    "content_type": "comment",
+    "post_or_comment_id": "synthetic_004",
+    "parent_id": "synthetic_parent_004",
+    "author_identifier": "research_user_004",
+    "created_utc": "2026-01-09T16:00:00Z",
+    "title": "",
+    "body": "Royal Bank of Canada had a weak quarter and slowing growth; bearish near term.",
+    "score": 11,
+    "num_comments": 0,
+    "permalink": "/synthetic/sample_value/synthetic_004",
+    "retrieved_at": "2026-01-09T16:02:00Z",
+    "synthetic_outcomes": {
+      "RY": {"1d": {"raw_return": -0.012, "benchmark_return": -0.002}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_markets",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_005",
+    "parent_id": null,
+    "author_identifier": "research_user_001",
+    "created_utc": "2026-01-12T14:30:00Z",
+    "title": "Apple analyst upgrade after strong demand",
+    "body": "The analyst raised the price target for AAPL after improved demand.",
+    "score": 28,
+    "num_comments": 8,
+    "permalink": "/synthetic/sample_markets/synthetic_005",
+    "retrieved_at": "2026-01-12T14:31:00Z",
+    "synthetic_outcomes": {
+      "AAPL": {"1d": {"raw_return": 0.013, "benchmark_return": 0.003}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_chatter",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_006",
+    "parent_id": null,
+    "author_identifier": "research_user_005",
+    "created_utc": "2026-01-13T13:00:00Z",
+    "title": "A quiet day for all of us",
+    "body": "I love it when we can focus on research. AI is useful now, so it can help with notes.",
+    "score": 5,
+    "num_comments": 2,
+    "permalink": "/synthetic/sample_chatter/synthetic_006",
+    "retrieved_at": "2026-01-13T13:02:00Z",
+    "synthetic_outcomes": {}
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_value",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_007",
+    "parent_id": null,
+    "author_identifier": "research_user_002",
+    "created_utc": "2026-01-14T15:00:00Z",
+    "title": "Tesla demand warning may matter",
+    "body": "TSLA demand looks weak and margins may decline. Bearish earnings risk.",
+    "score": 23,
+    "num_comments": 10,
+    "permalink": "/synthetic/sample_value/synthetic_007",
+    "retrieved_at": "2026-01-14T15:02:00Z",
+    "synthetic_outcomes": {
+      "TSLA": {"1d": {"raw_return": -0.018, "benchmark_return": -0.001}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_markets",
+    "content_type": "comment",
+    "post_or_comment_id": "synthetic_008",
+    "parent_id": "synthetic_parent_008",
+    "author_identifier": "research_user_006",
+    "created_utc": "2026-01-15T14:00:00Z",
+    "title": "",
+    "body": "$RY earnings beat estimates and guidance improved. Bullish but watching rates.",
+    "score": 17,
+    "num_comments": 0,
+    "permalink": "/synthetic/sample_markets/synthetic_008",
+    "retrieved_at": "2026-01-15T14:02:00Z",
+    "synthetic_outcomes": {
+      "RY": {"1d": {"raw_return": 0.011, "benchmark_return": 0.002}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_value",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_009",
+    "parent_id": null,
+    "author_identifier": "research_user_007",
+    "created_utc": "2026-01-19T14:00:00Z",
+    "title": "Shopify quarter needs context",
+    "body": "SHOP beat revenue expectations but guidance was weak. Neutral mixed quarter.",
+    "score": 14,
+    "num_comments": 6,
+    "permalink": "/synthetic/sample_value/synthetic_009",
+    "retrieved_at": "2026-01-19T14:02:00Z",
+    "synthetic_outcomes": {
+      "SHOP": {"1d": {"raw_return": -0.004, "benchmark_return": 0.002}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_markets",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_010",
+    "parent_id": null,
+    "author_identifier": "research_user_003",
+    "created_utc": "2026-01-20T15:00:00Z",
+    "title": "$NVDA launches a new chip",
+    "body": "The product launch has strong performance and possible upside.",
+    "score": 46,
+    "num_comments": 15,
+    "permalink": "/synthetic/sample_markets/synthetic_010",
+    "retrieved_at": "2026-01-20T15:02:00Z",
+    "synthetic_outcomes": {
+      "NVDA": {"1d": {"raw_return": 0.021, "benchmark_return": 0.005}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_value",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_011",
+    "parent_id": null,
+    "author_identifier": "research_user_004",
+    "created_utc": "2026-01-21T15:30:00Z",
+    "title": "AAPL regulatory investigation risk",
+    "body": "The investigation could create downside risk, so my view is bearish.",
+    "score": 16,
+    "num_comments": 5,
+    "permalink": "/synthetic/sample_value/synthetic_011",
+    "retrieved_at": "2026-01-21T15:32:00Z",
+    "synthetic_outcomes": {
+      "AAPL": {"1d": {"raw_return": -0.009, "benchmark_return": 0.001}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_markets",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_012",
+    "parent_id": null,
+    "author_identifier": "research_user_006",
+    "created_utc": "2026-01-22T14:10:00Z",
+    "title": "Shopify acquisition could support growth",
+    "body": "$SHOP announced an acquisition and management raised guidance. Bullish reaction.",
+    "score": 31,
+    "num_comments": 11,
+    "permalink": "/synthetic/sample_markets/synthetic_012",
+    "retrieved_at": "2026-01-22T14:12:00Z",
+    "synthetic_outcomes": {
+      "SHOP": {"1d": {"raw_return": 0.016, "benchmark_return": 0.003}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_promotions",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_013",
+    "parent_id": null,
+    "author_identifier": "research_user_013",
+    "created_utc": "2026-01-23T14:00:00Z",
+    "title": "$TSLA guaranteed moon buy now",
+    "body": "Guaranteed moon move, can't lose. See https://example.invalid/promo and buy now.",
+    "score": 2,
+    "num_comments": 1,
+    "permalink": "/synthetic/sample_promotions/synthetic_013",
+    "retrieved_at": "2026-01-23T14:01:00Z",
+    "synthetic_outcomes": {
+      "TSLA": {"1d": {"raw_return": -0.022, "benchmark_return": 0.001}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_promotions",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_014",
+    "parent_id": null,
+    "author_identifier": "research_user_014",
+    "created_utc": "2026-01-23T14:03:00Z",
+    "title": "$TSLA guaranteed moon buy now",
+    "body": "Guaranteed moon move, can't lose. See https://example.invalid/promo and buy now.",
+    "score": 1,
+    "num_comments": 0,
+    "permalink": "/synthetic/sample_promotions/synthetic_014",
+    "retrieved_at": "2026-01-23T14:04:00Z",
+    "synthetic_outcomes": {
+      "TSLA": {"1d": {"raw_return": -0.026, "benchmark_return": 0.001}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_promotions",
+    "content_type": "comment",
+    "post_or_comment_id": "synthetic_015",
+    "parent_id": "synthetic_013",
+    "author_identifier": "research_user_015",
+    "created_utc": "2026-01-23T14:06:00Z",
+    "title": "",
+    "body": "$TSLA guaranteed moon buy now. Guaranteed moon move, can't lose. See https://example.invalid/promo and buy now.",
+    "score": 1,
+    "num_comments": 0,
+    "permalink": "/synthetic/sample_promotions/synthetic_015",
+    "retrieved_at": "2026-01-23T14:07:00Z",
+    "synthetic_outcomes": {
+      "TSLA": {"1d": {"raw_return": -0.019, "benchmark_return": 0.0}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_markets",
+    "content_type": "comment",
+    "post_or_comment_id": "synthetic_016",
+    "parent_id": "synthetic_parent_016",
+    "author_identifier": "research_user_001",
+    "created_utc": "2026-01-27T15:00:00Z",
+    "title": "",
+    "body": "Tesla margins beat expectations and demand improved. TSLA looks bullish.",
+    "score": 25,
+    "num_comments": 0,
+    "permalink": "/synthetic/sample_markets/synthetic_016",
+    "retrieved_at": "2026-01-27T15:02:00Z",
+    "synthetic_outcomes": {
+      "TSLA": {"1d": {"raw_return": 0.015, "benchmark_return": 0.002}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_value",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_017",
+    "parent_id": null,
+    "author_identifier": "research_user_007",
+    "created_utc": "2026-01-28T14:00:00Z",
+    "title": "Royal Bank analyst downgrade",
+    "body": "An analyst downgrade warns of weak growth for RY. Bearish for the next quarter.",
+    "score": 19,
+    "num_comments": 4,
+    "permalink": "/synthetic/sample_value/synthetic_017",
+    "retrieved_at": "2026-01-28T14:02:00Z",
+    "synthetic_outcomes": {
+      "RY": {"1d": {"raw_return": -0.011, "benchmark_return": -0.001}}
+    }
+  },
+  {
+    "platform": "reddit",
+    "subreddit": "sample_markets",
+    "content_type": "post",
+    "post_or_comment_id": "synthetic_018",
+    "parent_id": null,
+    "author_identifier": "research_user_003",
+    "created_utc": "2026-01-29T14:00:00Z",
+    "title": "NVIDIA guidance remains strong",
+    "body": "Nvidia Corp raised guidance after another earnings beat. Bullish momentum remains.",
+    "score": 39,
+    "num_comments": 13,
+    "permalink": "/synthetic/sample_markets/synthetic_018",
+    "retrieved_at": "2026-01-29T14:02:00Z",
+    "synthetic_outcomes": {
+      "NVDA": {"1d": {"raw_return": 0.018, "benchmark_return": 0.004}}
+    }
+  }
+]
