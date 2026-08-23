@@ -24,6 +24,7 @@ from traderresearch.market.benchmarks import SectorBenchmarkSelector
 from traderresearch.market.symbols import SymbolMaster
 from traderresearch.models import (
     ForwardReturn,
+    ManipulationAssessment,
     PerformanceObservation,
     ResearchSignal,
     SignalDirection,
@@ -123,6 +124,7 @@ class AnalysisPipeline:
             mentions = extracted[item.post_or_comment_id]
             sentiment = self._sentiment.classify(item.text)
             event = self._events.classify(item.text)
+            manipulation_assessments: list[ManipulationAssessment] = []
             self._repository.save_mentions(mentions)
             mention_count += len(mentions)
 
@@ -136,6 +138,7 @@ class AnalysisPipeline:
                     if candidate.retrieved_at <= item.retrieved_at
                 ]
                 manipulation = assess_manipulation(available_cluster)
+                manipulation_assessments.append(manipulation)
                 velocity = calculate_discussion_velocity(
                     available_cluster,
                     item.retrieved_at,
@@ -223,19 +226,16 @@ class AnalysisPipeline:
             item.sentiment_label = sentiment.label
             item.event_type = event.event_type
             item.event_strength = event.strength
-            if mentions:
+            if manipulation_assessments:
                 item.manipulation_score = max(
-                    assess_manipulation(
-                        [
-                            candidate
-                            for candidate in ticker_content[mention.ticker]
-                            if candidate.retrieved_at <= item.retrieved_at
-                        ]
-                    ).score
-                    for mention in mentions
+                    assessment.score for assessment in manipulation_assessments
+                )
+                item.manipulation_flags = sorted(
+                    {flag for assessment in manipulation_assessments for flag in assessment.flags}
                 )
             else:
                 item.manipulation_score = 0.0
+                item.manipulation_flags = []
             self._repository.update_content_analysis(item)
 
         now = max((item.retrieved_at for item in content), default=datetime.now().astimezone())

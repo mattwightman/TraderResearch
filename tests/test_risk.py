@@ -8,6 +8,7 @@ from traderresearch.models import (
     MarketSnapshot,
     PaperOrderRequest,
     PortfolioState,
+    Position,
 )
 from traderresearch.trading.risk import RiskManager
 
@@ -101,3 +102,31 @@ def test_invalid_ticker_and_connection_are_rejected(now: datetime) -> None:
     assert not decision.approved
     assert "valid_ticker" in (decision.reason_for_rejection or "")
     assert "paper_connection" in (decision.reason_for_rejection or "")
+
+
+def test_non_cad_exposure_requires_normalized_portfolio_value(now: datetime) -> None:
+    portfolio = PortfolioState(
+        connected=True,
+        positions=[Position(ticker="NVDA", quantity=1, average_cost=100, currency="USD")],
+    )
+    decision = RiskManager(RiskConfig()).assess(
+        _request(),
+        _snapshot(now),
+        sample_symbol_master().get("SHOP"),
+        portfolio,
+        now=now,
+        duplicate_order=False,
+    )
+    assert not decision.approved
+    assert "total_exposure" in (decision.reason_for_rejection or "")
+
+    normalized = portfolio.model_copy(update={"reported_exposure_cad": 140})
+    approved = RiskManager(RiskConfig()).assess(
+        _request(),
+        _snapshot(now),
+        sample_symbol_master().get("SHOP"),
+        normalized,
+        now=now,
+        duplicate_order=False,
+    )
+    assert approved.approved

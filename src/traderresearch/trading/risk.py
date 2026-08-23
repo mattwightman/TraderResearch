@@ -35,9 +35,10 @@ class RiskManager:
             (position for position in portfolio.positions if position.ticker == request.ticker),
             None,
         )
-        position_value = current_position.value if current_position else 0.0
+        position_value = current_position.value * fx_to_cad if current_position else 0.0
         is_new_position = current_position is None
         age_seconds = (now - snapshot.price_observed_time).total_seconds()
+        portfolio_exposure = portfolio.total_exposure_cad
 
         checks = [
             RiskCheck(
@@ -115,13 +116,17 @@ class RiskManager:
             RiskCheck(
                 name="total_exposure",
                 passed=(
-                    portfolio.total_exposure + order_value
+                    portfolio_exposure is not None
+                    and portfolio_exposure + order_value
                     <= min(
                         self._config.max_total_exposure_cad,
                         self._config.research_capital_cad,
                     )
                 ),
-                detail="Exposure uses configured research capital, not broker balance.",
+                detail=(
+                    "Exposure uses configured research capital and requires CAD-normalized "
+                    "values for non-CAD positions."
+                ),
             ),
             RiskCheck(
                 name="open_positions",

@@ -316,10 +316,19 @@ class PortfolioState(BaseModel):
     open_orders: list[PaperOrder] = Field(default_factory=list)
     trades_today: int = Field(default=0, ge=0)
     daily_realized_pnl_cad: float = 0
+    reported_exposure_cad: float | None = Field(default=None, ge=0)
 
     @property
-    def total_exposure(self) -> float:
-        return sum(position.value for position in self.positions)
+    def total_exposure_cad(self) -> float | None:
+        """Return safe CAD exposure or None when an FX conversion is required."""
+
+        if self.reported_exposure_cad is not None:
+            return self.reported_exposure_cad
+        if not self.positions:
+            return 0.0
+        if all(position.currency == "CAD" for position in self.positions):
+            return sum(position.value for position in self.positions)
+        return None
 
 
 class RiskCheck(BaseModel):

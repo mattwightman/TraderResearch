@@ -18,6 +18,15 @@ def test_required_cli_workflow(tmp_path: Path, capsys: object) -> None:
     assert "SOURCE_SCORE" in output
     assert "TICKER" in output
 
+    # The coordinated synthetic cluster preserves both its score and flags.
+    from traderresearch.storage.database import Database
+    from traderresearch.storage.repository import ResearchRepository
+
+    content = ResearchRepository(Database.from_sqlite_path(database)).list_content()
+    promoted = next(item for item in content if item.post_or_comment_id == "synthetic_015")
+    assert promoted.manipulation_score
+    assert "repeated_urls" in promoted.manipulation_flags
+
 
 def test_cli_ingestion_is_idempotent(tmp_path: Path, capsys: object) -> None:
     database = tmp_path / "cli.sqlite3"
