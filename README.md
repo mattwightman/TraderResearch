@@ -94,6 +94,8 @@ python -m pip install -e '.[dev]'
 pytest
 ruff check .
 ruff format --check .
+mypy
+pip-audit
 ```
 
 Runtime SQLite files default to the operating system's per-user application-data location,
@@ -297,8 +299,8 @@ sensitive key names. See `SECURITY.md` before committing or publishing.
 - Real historical price/calendar ingestion, corporate-action adjustment, news confirmation,
   FX conversion, and spread/volume confirmation are not yet implemented.
 - PostgreSQL support is architecturally separated but not yet integration-tested.
-- IBKR paper order status/fill callbacks need durable production persistence and recovery tests
-  before `paper-run` can submit.
+- Real IBKR submission and cancellation are unconditionally disabled until a paper session can
+  be verified independently and order callbacks have durable persistence and recovery tests.
 - Synthetic observations are too small and designed for tests, not inference.
 
 ## License

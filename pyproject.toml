@@ -47,7 +47,7 @@ include-package-data = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-traderresearch = ["data/*.json"]
+traderresearch = ["data/*.json", "py.typed"]
 
 [tool.pytest.ini_options]
 addopts = "-ra --strict-markers --strict-config"

@@ -434,44 +434,22 @@ class IbkrPaperClient:
         )
 
     def submit_limit_order(self, request: PaperOrderRequest) -> PaperOrder:
+        """Reject real broker submission until the paper session can be verified."""
+
         enforce_paper_only(self._config.environment, self._config.live_trading_enabled)
-        if not self._config.order_submission_enabled:
-            raise RuntimeError("Paper order submission is disabled by configuration.")
-        if not self.is_connected() or self._app.next_order_id is None:
-            raise ConnectionError("Paper broker is not connected or has no valid order ID.")
-        from ibapi.contract import Contract
-        from ibapi.order import Order
-
-        contract = Contract()
-        contract.symbol = request.ticker
-        contract.secType = "STK"
-        contract.exchange = request.exchange
-        contract.currency = request.currency
-        order = Order()
-        order.action = "BUY"
-        order.orderType = "LMT"
-        order.totalQuantity = request.quantity
-        order.lmtPrice = request.limit_price
-        order.transmit = True
-
-        order_id = int(self._app.next_order_id)
-        self._app.next_order_id += 1
-        self._app.placeOrder(order_id, contract, order)
-        return PaperOrder(
-            order_id=f"ibkr-paper-{order_id}",
-            request=request,
-            status=OrderStatus.SUBMITTED,
-            order_submitted_time=utc_now(),
+        del request
+        raise RuntimeError(
+            "IBKR order submission is disabled in this release because the connected "
+            "session cannot yet be verified as paper-only."
         )
 
     def cancel_order(self, order_id: str) -> None:
-        if not self.is_connected():
-            raise ConnectionError("Paper broker is not connected.")
-        try:
-            numeric_id = int(order_id.removeprefix("ibkr-paper-"))
-        except ValueError as error:
-            raise ValueError("Invalid paper order identifier.") from error
-        self._app.cancelOrder(numeric_id, "TraderResearch paper cancellation")
+        enforce_paper_only(self._config.environment, self._config.live_trading_enabled)
+        del order_id
+        raise RuntimeError(
+            "IBKR order cancellation is disabled in this release because the connected "
+            "session cannot yet be verified as paper-only."
+        )
 
     def drain_order_events(self) -> list[PaperOrderEvent]:
         if self._app is None:

@@ -15,7 +15,7 @@ from traderresearch.models import (
     SignalFactors,
 )
 from traderresearch.storage.repository import ResearchRepository
-from traderresearch.trading.ibkr import MockIbkrClient, enforce_paper_only
+from traderresearch.trading.ibkr import IbkrPaperClient, MockIbkrClient, enforce_paper_only
 from traderresearch.trading.paper_executor import PaperExecutor
 from traderresearch.trading.risk import RiskManager
 
@@ -46,6 +46,22 @@ def test_mock_requires_explicit_paper_submission_enablement() -> None:
     )
     with pytest.raises(RuntimeError, match="disabled"):
         client.submit_limit_order(request)
+
+
+def test_official_ibkr_submission_is_unconditionally_disabled() -> None:
+    client = IbkrPaperClient(IbkrConfig(order_submission_enabled=True))
+    request = PaperOrderRequest(
+        client_order_id="synthetic-order",
+        signal_id="sig_synthetic",
+        ticker="SHOP",
+        quantity=1,
+        limit_price=100,
+        currency="CAD",
+    )
+    with pytest.raises(RuntimeError, match="disabled in this release"):
+        client.submit_limit_order(request)
+    with pytest.raises(RuntimeError, match="disabled in this release"):
+        client.cancel_order("ibkr-paper-1")
 
 
 def test_mock_handles_partial_and_complete_fills() -> None:
