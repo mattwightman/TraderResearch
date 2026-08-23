@@ -9,7 +9,7 @@ from pathlib import Path
 
 from traderresearch.analysis.pipeline import AnalysisPipeline
 from traderresearch.config import AppConfig, load_config
-from traderresearch.logging_config import configure_logging
+from traderresearch.logging_config import configure_logging, redact_sensitive_text
 from traderresearch.market.symbols import sample_symbol_master
 from traderresearch.reddit.mock_collector import MockRedditCollector
 from traderresearch.storage.database import Database
@@ -210,7 +210,10 @@ def _paper_status(config: AppConfig, use_mock: bool) -> int:
         )
         print(status.message)
     except (ConnectionError, RuntimeError) as error:
-        print(f"Paper status unavailable: {error}", file=sys.stderr)
+        print(
+            f"Paper status unavailable: {redact_sensitive_text(str(error))}",
+            file=sys.stderr,
+        )
         return 2
     finally:
         client.disconnect()
@@ -259,7 +262,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         if args.command == "evaluate":
             return _evaluate(repository)
     except (OSError, ValueError, RuntimeError, LookupError) as error:
-        print(f"Error: {error}", file=sys.stderr)
+        print(f"Error: {redact_sensitive_text(str(error))}", file=sys.stderr)
         return 2
     return 2
 

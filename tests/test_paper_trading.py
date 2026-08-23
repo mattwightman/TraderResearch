@@ -88,7 +88,9 @@ def test_mock_handles_rejected_orders() -> None:
 
 
 def test_executor_prevents_persisted_duplicate_orders(
-    repository: ResearchRepository, now: datetime
+    repository: ResearchRepository,
+    now: datetime,
+    caplog: pytest.LogCaptureFixture,
 ) -> None:
     broker = MockIbkrClient(IbkrConfig(order_submission_enabled=True))
     broker.connect()
@@ -137,3 +139,6 @@ def test_executor_prevents_persisted_duplicate_orders(
     assert executor.submit(signal, request, snapshot, symbol, portfolio, now=now)
     assert executor.submit(signal, request, snapshot, symbol, portfolio, now=now) is None
     assert len(repository.list_paper_orders()) == 1
+    audit_records = [record for record in caplog.records if hasattr(record, "author_identifier")]
+    assert audit_records
+    assert all(record.author_identifier == "[REDACTED]" for record in audit_records)

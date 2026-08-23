@@ -78,11 +78,17 @@ class PaperExecutor:
             reason_for_rejection=decision.reason_for_rejection,
         )
         if not decision.approved:
-            self._logger.warning("paper_order_rejected", extra=audit.model_dump())
+            self._logger.warning("paper_order_rejected", extra=self._safe_audit_fields(audit))
             return None
         order = self._broker.submit_limit_order(request)
         self._repository.save_paper_order(order)
         audit.order_id = order.order_id
         audit.order_status = order.status.value
-        self._logger.info("paper_order_submitted", extra=audit.model_dump())
+        self._logger.info("paper_order_submitted", extra=self._safe_audit_fields(audit))
         return order
+
+    @staticmethod
+    def _safe_audit_fields(audit: DecisionAudit) -> dict[str, object]:
+        fields = audit.model_dump()
+        fields["author_identifier"] = "[REDACTED]"
+        return fields

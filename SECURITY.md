@@ -17,6 +17,12 @@ Use a secure environment or secret manager. `.env.example` is a schema made only
 placeholders; it is not a credential store. Runtime data belongs in the OS application-data
 directory or another external, access-controlled location.
 
+Raw social-media usernames must be pseudonymized at the collection boundary with a keyed
+one-way function before they reach application models, storage, logs, exceptions, or CLI
+output. Do not use an unkeyed username hash: predictable identifiers can be enumerated.
+TraderResearch's structured logger redacts identifier fields, common credential formats,
+private paths, private network addresses, account-like identifiers, and nested sensitive keys.
+
 ## Before every commit
 
 1. Review staged filenames and the complete staged diff.

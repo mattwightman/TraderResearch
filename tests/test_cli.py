@@ -49,3 +49,12 @@ def test_paper_run_submits_nothing_by_default(capsys: object) -> None:
     assert main(["paper-run", "--mock"]) == 0
     output = capsys.readouterr().out  # type: ignore[attr-defined]
     assert "No order was submitted" in output
+
+
+def test_cli_redacts_private_paths_from_errors(capsys: object) -> None:
+    private_path = "/" + "home" + "/YOUR_USERNAME/private-config.yaml"
+
+    assert main(["--config", private_path, "analyze"]) == 2
+    error = capsys.readouterr().err  # type: ignore[attr-defined]
+    assert private_path not in error
+    assert "[PRIVATE_PATH]" in error

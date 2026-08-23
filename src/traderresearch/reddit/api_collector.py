@@ -12,7 +12,12 @@ from traderresearch.models import SocialContent
 
 
 class RedditApiCollector:
-    """Future read-only adapter requiring explicitly approved credentials."""
+    """Future read-only adapter requiring explicitly approved credentials.
+
+    Any implementation must pseudonymize author identifiers with a keyed one-way
+    function before constructing ``SocialContent``. Raw usernames must never enter
+    application storage, logs, exceptions, or CLI output.
+    """
 
     def __init__(self, config: RedditConfig) -> None:
         config.require_api_credentials()

@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: cef0300fd0fc4d2a87a85fa2093c6b283ea36f4b  # v5.0.0
     hooks:
       - id: check-ast
       - id: check-toml
@@ -9,12 +9,12 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.10
+    rev: 0acff885bcb16381b67930fefb91e460202f172c  # v0.12.10
     hooks:
       - id: ruff-check
         args: [--fix]
       - id: ruff-format
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.28.0
+    rev: 4fb43823ef3d152d239e92d7d5cb04783b548062  # v8.28.0
     hooks:
       - id: gitleaks

@@ -8,7 +8,7 @@ from typing import Any, Literal
 
 import yaml
 from platformdirs import user_data_path
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, SecretStr, model_validator
 
 
 class RedditConfig(BaseModel):
@@ -16,9 +16,9 @@ class RedditConfig(BaseModel):
 
     mode: Literal["mock", "api"] = "mock"
     communities: list[str] = Field(default_factory=list)
-    client_id: str | None = None
-    client_secret: str | None = None
-    user_agent: str | None = None
+    client_id: SecretStr | None = Field(default=None, repr=False)
+    client_secret: SecretStr | None = Field(default=None, repr=False)
+    user_agent: str | None = Field(default=None, repr=False)
 
     def require_api_credentials(self) -> None:
         if self.mode == "api" and not all((self.client_id, self.client_secret, self.user_agent)):
@@ -101,7 +101,7 @@ class IbkrConfig(BaseModel):
 class AppConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    data_dir: Path = Field(default_factory=lambda: user_data_path("TraderResearch"))
+    data_dir: Path = Field(default_factory=lambda: user_data_path("TraderResearch"), repr=False)
     log_level: str = "INFO"
     reddit: RedditConfig = Field(default_factory=RedditConfig)
     analysis: AnalysisConfig = Field(default_factory=AnalysisConfig)

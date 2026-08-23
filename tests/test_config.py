@@ -39,3 +39,20 @@ def test_live_environment_configuration_is_rejected(
     monkeypatch.delenv("IBKR_ENVIRONMENT", raising=False)
     with pytest.raises((RuntimeError, ValueError), match=r"paper|Live"):
         load_config(path)
+
+
+def test_sensitive_configuration_values_are_masked(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    client_id = "placeholder-" + "client-id"
+    credential_value = "placeholder-" + "client-secret"
+    monkeypatch.setenv("REDDIT_CLIENT_ID", client_id)
+    monkeypatch.setenv("REDDIT_CLIENT_SECRET", credential_value)
+    monkeypatch.setenv("REDDIT_USER_AGENT", "TraderResearch/public-safe-test")
+
+    config = load_config()
+
+    assert config.reddit.client_id is not None
+    assert config.reddit.client_id.get_secret_value() == client_id
+    assert client_id not in repr(config)
+    assert credential_value not in repr(config)

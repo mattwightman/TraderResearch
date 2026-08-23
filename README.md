@@ -157,8 +157,9 @@ message because network collection has not yet been activated. Never commit the 
 populated `.env` file.
 
 Only collect fields required for the research question. `author_identifier` is deliberately
-treated as an opaque identifier, allowing a future ingestion boundary to hash or pseudonymize
-it before storage.
+opaque. A future API adapter must replace raw usernames at the collection boundary using a
+keyed one-way pseudonym before model construction, storage, logging, or display. The key must
+remain outside the repository; an unkeyed hash is not sufficient for predictable usernames.
 
 ### IBKR paper status
 

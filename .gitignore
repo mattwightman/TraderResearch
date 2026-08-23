@@ -12,13 +12,25 @@ credentials/
 private/
 
 *.db
+*.db-*
 *.sqlite
+*.sqlite-*
 *.sqlite3
+*.sqlite3-*
 data/
 !src/traderresearch/data/
-!src/traderresearch/data/*.json
+src/traderresearch/data/*
+!src/traderresearch/data/synthetic_reddit.json
+sample_data/*
+!sample_data/synthetic_reddit.json
 logs/
 *.log
+*.log.*
+*.jsonl
+*.ndjson
+*.parquet
+*.arrow
+*.feather
 
 .venv/
 venv/
@@ -26,6 +38,8 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 *.egg-info/
 build/
 dist/
