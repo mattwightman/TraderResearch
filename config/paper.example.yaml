@@ -1,0 +1,21 @@
+ibkr:
+  host: 127.0.0.1
+  port: 7497
+  client_id: 1
+  environment: paper
+  live_trading_enabled: false
+  order_submission_enabled: false
+
+risk:
+  research_capital_cad: 5000
+  max_order_value_cad: 500
+  max_position_value_cad: 1000
+  max_total_exposure_cad: 3000
+  max_open_positions: 5
+  max_trades_per_day: 10
+  max_daily_loss_cad: 100
+  minimum_stock_price: 1
+  minimum_market_cap: 50000000
+  minimum_average_daily_volume: 100000
+  maximum_bid_ask_spread: 0.02
+  maximum_price_age_seconds: 30

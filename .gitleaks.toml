@@ -1,0 +1,20 @@
+title = "TraderResearch secret scanning configuration"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Documented public placeholders"
+regexes = [
+  '''example@example\.com''',
+  '''your_client_(id|secret)_here''',
+  '''REDDIT_CLIENT_(ID|SECRET)''',
+  '''PAPER_ACCOUNT''',
+  '''YOUR_USERNAME''',
+]
+paths = [
+  '''\.env\.example$''',
+  '''README\.md$''',
+  '''SECURITY\.md$''',
+  '''tests/''',
+]

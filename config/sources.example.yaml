@@ -1,0 +1,23 @@
+reddit:
+  mode: mock
+  communities:
+    - sample_markets
+    - sample_stocks
+
+analysis:
+  minimum_source_samples: 5
+  source_score_half_life_days: 30
+  recent_window_days: 30
+  low_volume_baseline_floor: 0.25
+  signal_weights:
+    source_quality: 0.18
+    author_quality: 0.10
+    sentiment_strength: 0.12
+    discussion_velocity: 0.14
+    event_importance: 0.12
+    freshness: 0.10
+    news_confirmation: 0.06
+    price_confirmation: 0.05
+    volume_confirmation: 0.05
+    liquidity: 0.04
+    manipulation_safety: 0.04
